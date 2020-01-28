@@ -1,5 +1,10 @@
+require "pry"
 class BankAccount
   attr_reader :user_id, :balance
+
+  def user_id
+    @user_id
+  end
 
   @@all = []
 
@@ -8,22 +13,30 @@ class BankAccount
     @balance = balance
 
     @@all << self
+
   end
 
   def deposit(amount)
     @balance += amount
-    whatever
-  end
 
-  def whatever 
-   puts "whatever"
   end
 
   def withdraw(amount)
+    self.balance -= amount
+    balance -= amount
     @balance -= amount
   end
 
   def self.all
     @@all
   end
+
+  def self.all_accounts
+    all.each do |acct|
+      puts "Account Id " + acct.user_id
+    end
+
+    self.all.each
+  end
+
 end
